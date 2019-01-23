@@ -7,6 +7,14 @@ test('should create a min heap when initialized with no comparator', () => {
   expect(isValidMinHeap(heap._heap)).toBe(true);
 });
 
+test('should create a heap using a comparator when provided with one', () => {
+  const maxHeapComparator = function(a, b) { return a > b };
+  const heap = new BinaryHeap(maxHeapComparator);
+  heap.insert(generateRandomArray(10))
+  console.log(heap);
+  expect(isValidMaxHeap(heap._heap)).toBe(true);
+});
+
 /* Helpers */
 
 const isValidMinHeap = function(heap) {
@@ -16,6 +24,19 @@ const isValidMinHeap = function(heap) {
   for (var i = heap.length - 1; i >= 0; i--) {
     const parent = Math.floor((i - 1) / 2)
     if (heap[parent] > heap[i]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+const isValidMaxHeap = function(heap) {
+  if (!heap.length) {
+    return false;
+  }
+  for (var i = heap.length - 1; i >= 0; i--) {
+    const parent = Math.floor((i - 1) / 2)
+    if (heap[parent] < heap[i]) {
       return false;
     }
   }

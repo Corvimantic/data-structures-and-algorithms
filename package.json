@@ -1,0 +1,23 @@
+{
+  "name": "data-and-algorithms",
+  "version": "1.0.0",
+  "description": "Vanilla JavaScript implementations of some basic data structures and algorithms.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manifold-menagerie/data-and-algorithms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manifold-menagerie/data-and-algorithms/issues"
+  },
+  "homepage": "https://github.com/manifold-menagerie/data-and-algorithms#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

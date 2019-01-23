@@ -95,3 +95,7 @@ const calculateParentIndex = function(childIndex) {
 const calculateChildIndices = function(parentIndex) {
   return [parentIndex * 2 + 1, parentIndex * 2 + 2];
 };
+
+/* Exports */
+
+module.exports = BinaryHeap;

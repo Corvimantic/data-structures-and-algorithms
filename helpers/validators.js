@@ -34,4 +34,5 @@ const isValidHeap = function(heap, comparator) {
 
 module.exports = {
   isSorted: isSorted,
+  isValidHeap, isValidHeap, 
 };

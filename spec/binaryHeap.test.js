@@ -1,4 +1,5 @@
 const BinaryHeap = require('../data-structures/BinaryHeap.js');
+const helpers = require('./helpers.js');
 
 test('should create a min heap when initialized with no comparator', () => {
   const heap = new BinaryHeap();
@@ -18,6 +19,9 @@ test('should create a heap using a comparator when provided with one', () => {
 });
 
 /* Helpers */
+
+const generateRandomArray = helpers.generateRandomArray;
+const generateRandomInt = helpers.generateRandomInt;
 
 const isValidMinHeap = function(heap) {
   if (!heap.length) {
@@ -43,16 +47,4 @@ const isValidMaxHeap = function(heap) {
     }
   }
   return true;
-};
-
-const generateRandomArray = function(length) {
-  const result = [];
-  for (var i = 0; i < length; i++) {
-    result.push(generateRandomInt());
-  }
-  return result;
-};
-
-const generateRandomInt = function() {
-  return Math.floor(Math.random() * 50);
 };

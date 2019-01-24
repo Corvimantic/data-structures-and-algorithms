@@ -1,41 +1,52 @@
-const insertionSort = require('../algorithms/insertionSort.js');
-const helpers = require('./helpers.js');
+const insertionSort = require('../algorithms/insertionSort.js'); 
 
 describe('insertionSort', () => {
   test('should sort from min to max when called with no comparator', () => {
-    const array = generateRandomArray(10);
+    const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];
     const sortedArray = insertionSort(array);
 
-    expect(isSorted(sortedArray)).toBe(true);
-    expect(sortedArray.length).toBe(10);
+    expect(sortedArray).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+  
+  test('should sort duplicate values', () => {
+    const array = [3, 7, 8, 3, 4, 7, 8, 8, 9, 0];
+    const sortedArray = insertionSort(array);
+
+    expect(sortedArray).toEqual([0, 3, 3, 4, 7, 7, 8, 8, 8, 9]);
   });
 
-  test('should sort using a comparator', () => {
-    const comparator = function(a, b) { return a > b };
-    const array = generateRandomArray(10);
+  test('should sort using a comparator', () => { 
+    const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];
+    const comparator = function (a, b) { return a > b };
     const sortedArray = insertionSort(array, comparator);
 
-    expect(isSorted(sortedArray, comparator)).toBe(true);
-    expect(sortedArray.length).toBe(10);
+    expect(sortedArray).toEqual([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]);
   });
 
   test('should mutate the input array', () => {
-    const array = generateRandomArray(10);
+    const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];
     const sortedArray = insertionSort(array);
 
-    expect(array).toBe(sortedArray);
+    expect(sortedArray).toBe(array);
   });
 
-  //test('should be a stable sort', () => {
-  //});
-});
-
-
-/* Helpers */
-
-const {
-  generateRandomArray,
-  generateRandomInt,
-  generateRandomObjectArray,
-  isSorted,
-} = helpers;
+  test('should be a stable sort', () => { 
+    const array = [
+      {value: 1, order: 1}, 
+      {value: 1, order: 2}, 
+      {value: 0, order: 1}, 
+      {value: 1, order: 3}, 
+      {value: 0, order: 2}
+    ];
+    const comparator = function(a, b) { return a.value < b.value };
+    const sortedArray = insertionSort(array, comparator); 
+    
+    expect(sortedArray).toEqual([
+      {value: 0, order: 1}, 
+      {value: 0, order: 2}, 
+      {value: 1, order: 1}, 
+      {value: 1, order: 2}, 
+      {value: 1, order: 3}
+    ]); 
+  });
+}); 

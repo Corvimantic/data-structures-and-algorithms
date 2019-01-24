@@ -5,6 +5,7 @@ test('should create a min heap when initialized with no comparator', () => {
   heap.insert(generateRandomArray(10))
   console.log(heap);
   expect(isValidMinHeap(heap._heap)).toBe(true);
+  expect(heap._heap.length).toBe(10);
 });
 
 test('should create a heap using a comparator when provided with one', () => {
@@ -13,6 +14,7 @@ test('should create a heap using a comparator when provided with one', () => {
   heap.insert(generateRandomArray(10))
   console.log(heap);
   expect(isValidMaxHeap(heap._heap)).toBe(true);
+  expect(heap._heap.length).toBe(10);
 });
 
 /* Helpers */

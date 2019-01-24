@@ -3,7 +3,7 @@ const BinaryHeap = require('../data-structures/BinaryHeap.js');
 test('should create a min heap when initialized with no comparator', () => {
   const heap = new BinaryHeap();
   heap.insert(generateRandomArray(10))
-  console.log(heap);
+
   expect(isValidMinHeap(heap._heap)).toBe(true);
   expect(heap._heap.length).toBe(10);
 });
@@ -12,7 +12,7 @@ test('should create a heap using a comparator when provided with one', () => {
   const maxHeapComparator = function(a, b) { return a > b };
   const heap = new BinaryHeap(maxHeapComparator);
   heap.insert(generateRandomArray(10))
-  console.log(heap);
+
   expect(isValidMaxHeap(heap._heap)).toBe(true);
   expect(heap._heap.length).toBe(10);
 });

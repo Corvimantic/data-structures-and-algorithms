@@ -50,11 +50,18 @@ describe('insertionSort', () => {
     ]); 
   });
 
-  test('should mutate the input array', () => {
+  test('should return the input array', () => {
     const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];
     const sortedArray = insertionSort(array);
 
     expect(sortedArray).toBe(array);
+  });
+
+  test('should mutate the input array', () => {
+    const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];
+    const sortedArray = insertionSort(array);
+
+    expect(array).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
   
   test('should return the same empty array passed in when given an empty array', () => {

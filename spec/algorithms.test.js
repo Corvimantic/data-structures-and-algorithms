@@ -93,4 +93,20 @@ describe('insertionSort', () => {
     expect(() => { insertionSort(number) }).toThrow(TypeError);
     expect(() => { insertionSort(string) }).toThrow(TypeError);
   });
+  
+  test('should use the default sort if given a non-function for the comparator', () => {
+    const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];
+    const boolean = false;
+    const object = { isValidInput: false };
+    const number = 42;
+    const string = 'not valid'; 
+
+    expect(insertionSort(array, null)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(insertionSort(array, undefined)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(insertionSort(array, boolean)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(insertionSort(array, object)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(insertionSort(array, array)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(insertionSort(array, number)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(insertionSort(array, string)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
 }); 

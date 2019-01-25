@@ -29,6 +29,14 @@ describe('insertionSort', () => {
     expect(sortedArray).toEqual([]);
     expect(sortedArray).toBe(array);
   });
+  
+  test('should return the same single-entry array passed in when given a single-entry array', () => {
+    const array = [0];
+    const sortedArray = insertionSort(array);
+
+    expect(sortedArray).toEqual([0]);
+    expect(sortedArray).toBe(array);
+  });
 
   test('should sort using a comparator', () => { 
     const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];

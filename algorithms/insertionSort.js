@@ -4,6 +4,9 @@ If no comparator is specified, the function will default to sorting least to gre
 This algorithm sorts an array in place and WILL mutate the input array.
 *** */
 const insertionSort = function(array, comparator) {
+  if (!Array.isArray(array)) {
+    throw new TypeError('Input was not an array');
+  }
   if (!comparator) {
     comparator = function(a, b) { return a < b };
   }

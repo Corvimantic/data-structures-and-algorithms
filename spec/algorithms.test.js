@@ -14,6 +14,13 @@ describe('insertionSort', () => {
 
     expect(sortedArray).toEqual([0, 3, 3, 4, 7, 7, 8, 8, 8, 9]);
   });
+  
+  test('should sort non-integers', () => {
+    const array = ['b', 'h', 'a', 'e', 'j', 'd', 'i', 'c', 'g', 'f'];
+    const sortedArray = insertionSort(array);
+
+    expect(sortedArray).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']);
+  });
 
   test('should sort using a comparator', () => { 
     const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];

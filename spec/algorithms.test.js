@@ -72,4 +72,18 @@ describe('insertionSort', () => {
     expect(sortedArray).toEqual([0]);
     expect(sortedArray).toBe(array);
   });
+  
+  test('should throw a TypeError when given a non-array', () => {
+    const boolean = false;
+    const object = { isValidInput: false };
+    const number = 42;
+    const string = 'not valid'; 
+
+    expect(() => { insertionSort(null) }).toThrow(TypeError);
+    expect(() => { insertionSort(undefined) }).toThrow(TypeError);
+    expect(() => { insertionSort(boolean) }).toThrow(TypeError);
+    expect(() => { insertionSort(object) }).toThrow(TypeError);
+    expect(() => { insertionSort(number) }).toThrow(TypeError);
+    expect(() => { insertionSort(string) }).toThrow(TypeError);
+  });
 }); 

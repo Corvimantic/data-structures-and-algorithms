@@ -21,6 +21,14 @@ describe('insertionSort', () => {
 
     expect(sortedArray).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']);
   });
+  
+  test('should return the same empty array passed in when given an empty array', () => {
+    const array = [];
+    const sortedArray = insertionSort(array);
+
+    expect(sortedArray).toEqual([]);
+    expect(sortedArray).toBe(array);
+  });
 
   test('should sort using a comparator', () => { 
     const array = [3, 7, 8, 1, 9, 4, 6, 5, 2, 0];

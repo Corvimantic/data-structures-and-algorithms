@@ -7,7 +7,7 @@ const insertionSort = function(array, comparator) {
   if (!Array.isArray(array)) {
     throw new TypeError('Input was not an array');
   }
-  if (!comparator) {
+  if (typeof comparator !== 'function') {
     comparator = function(a, b) { return a < b };
   }
 

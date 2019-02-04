@@ -9,6 +9,6 @@ describe('Tree', () => {
   test('should add a child with .addChild', () => {
     const tree = new Tree(0);
     tree.addChild(1);
-    expect(tree.children[0].value).toEqual({ value: 1, children: [] });
+    expect(tree.children[0]).toEqual({ value: 1, children: [] });
   });
 });

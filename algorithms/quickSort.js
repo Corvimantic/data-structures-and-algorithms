@@ -15,45 +15,43 @@ const quickSort = function(array, comparator) {
 
 /* Helpers */
 
-const recursivelySort = function(array, comparator, start, end) {
-  if (start - end > -1) {
-    return;
+var recursivelySort = function(array, comparator, start, end) {
+  if (start === end) {
+    return array; 
   }
-  const pivot = sortPivot(array, comparator, start, end);
-  recursivelySort(array, comparator, start, pivot - 1);
-  recursivelySort(array, comparator, pivot + 1, end);
-}; 
-
-const sortPivot = function(array, comparator, start, end) {
-  let p = end;
+  
   let l = start;
   let r = end - 1; 
-  while (l <= p) {
-    if (l === p) {
-      return p;
-    }
-    while (comparator(array[l], array[p])) {
+  let p = end;
+  
+  while (l < p) {
+    while (!comparator(array[p], array[l]) && l < end) {
       l++;
     }
-    while (l <= r && !comparator(array[r], array[p])) {
-      if (r === l) {
-        swapItems(array, r, p);
-        return r;
-      }
+    while (l < r && !comparator(array[r], array[p]) && r > start) {
       r--;
     }
-    if (l < r) {
-      swapItems(array, l, r);  
+    if (l === r) {
+      swapItems(array, l, p);
+      recursivelySort(array, comparator, start, l - 1);
+      recursivelySort(array, comparator, l + 1, end);
+      break;
+    } else if (l === p) {
+      recursivelySort(array, comparator, start, p - 1); 
+      break;
+    } else {
+      swapItems(array, r, l); 
     }
   }
-}; 
+  
+  return array;
+};
 
-const swapItems = function(array, a, b) {
-  const firstItem = array[a];
-  const secondItem = array[b];
-  array[a] = secondItem;
-  array[b] = firstItem; 
-}; 
+var swapItems = function(array, first, second) {
+  const secondItem = array[second];
+  array[second] = array[first];
+  array[first] = secondItem;
+};
 
 /* Export */ 
 
